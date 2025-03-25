@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'testapp/index.html'%}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/demo.css'%}">    
+
+
+
+{% block bodyblock %}
+    <div class="container">
+        <div class="form-wrapper">
+            <h1 >Login Form</h1>
+            <br>
+            <div class="form-content">
+                <form id="login-form" method="post">
+                    {{form.as_p}}
+                    {% csrf_token %}
+                    <input type="submit" value="Login" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

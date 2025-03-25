@@ -1,0 +1,23 @@
+{% extends 'testapp/index.html'%}
+{% load static %}
+
+{% block bodyblock %}
+    <div class="container">
+        <h1>Filter Employee Details</h1>
+        <hr>
+        <form action="/filter_emp" method="post">
+            {% csrf_token %}
+            <label for="first_name">First Name/Last Name</label><br>
+            <input type="text" name="name" id="name" value="{{name}}"><br>
+            <label for="dept">Department</label><br>
+            <input type="text" name="dept" id="dept" value="{{dept}}"><br>
+            <label for="role">Role</label><br>
+            <input type="text" name="role" id="role" value="{{role}}"><br>
+            
+            <hr>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+    
+{% endblock %}

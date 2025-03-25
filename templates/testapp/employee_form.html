@@ -1,0 +1,17 @@
+{% extends 'testapp/index.html'%}
+{% load static %}
+
+{% block bodyblock %}
+<body>
+    <div class="container">
+       <div>
+        <h2 style="color: whitesmoke;">Update Employee Details of {{employee.first_name|upper}}</h2>
+        
+        <form method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" name="" value="Update" class="btn btn-primary">
+        </form>
+       </div>
+    </div>
+{% endblock %}

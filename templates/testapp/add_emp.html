@@ -1,0 +1,73 @@
+{% extends 'testapp/index.html'%}
+{% load static %}
+
+{% block bodyblock %}
+    <div class="container">
+        <h1>Add an Employee!</h1>
+        <hr>
+        <form action="/add_emp" method="post">
+            {% csrf_token %}
+            <label for="first_name">First Name</label><br>
+            <input type="text" name="first_name" id="first_name" value="{{first_name}}"><br>
+            <label for="last_name">Last Name</label><br>
+            <input type="text" name="last_name" id="last_name" value="{{last_name}}"><br>
+            <label for="dept">Department</label><br>
+            <select name="dept" id="dept">
+                <option value="">Select Department</option>
+                <option value="1">HR</option>
+                <option value="2">Python Developer</option>
+                <option value="3">Java Developer</option>
+                <option value="4">.net Developer</option>
+                <option value="5">Manual Tester</option>
+                <option value="6">Automation</option>
+            </select><br>
+            <label for="salary">Salary</label><br>
+            <input type="number" name="salary" id="salary" value="{{salary}}"><br>
+            <label for="bonus">Bonus</label><br>
+            <input type="number" name="bonus" id="bonus" value="{{bonus}}"><br>
+            <label for="role">Role</label><br>
+            <select name="role" id="role">
+                <option value="">Select Role</option>
+                <option value="1">Python Developer</option>
+                <option value="2">Java Developer</option>
+                <option value="3">.net Developer</option>
+                <option value="4">Manual Tester</option>
+                <option value="5">Automation</option>
+                <option value="6">Senior Developer</option>
+                <option value="7">Senior HR</option>
+                <option value="8">Project Manager</option>
+            </select><br>
+            <label for="phone">Phone</label><br>
+            <input type="number" name="phone" id="phone" value="{{phone}}"><br>
+            <label for="hire_date">Hire Date</label><br>
+            <input type="date" name="hire_date" id="hire_date" value="{{hire_date}}"><br>
+            <hr>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      
+    </div>
+   
+    
+{% endblock %}
+
+<!-- <form action="/add_emp" method="post">
+    {% csrf_token %}
+    <label for="first_name">First Name</label><br>
+    <input type="text" name="first_name" id="first_name" value="{{first_name}}"><br>
+    <label for="last_name">Last Name</label><br>
+    <input type="text" name="last_name" id="last_name" value="{{last_name}}"><br>
+    <label for="dept">Department</label><br>
+    <input type="text" name="dept" id="dept" value="{{dept}}"><br>
+    <label for="salary">Salary</label><br>
+    <input type="number" name="salary" id="salary" value="{{salary}}"><br>
+    <label for="bonus">Bonus</label><br>
+    <input type="number" name="bonus" id="bonus" value="{{bonus}}"><br>
+    <label for="role">Role</label><br>
+    <input type="text" name="role" id="role" value="{{role}}"><br>
+    <label for="role">Phone</label><br>
+    <input type="number" name="phone" id="role" value="{{phone}}"><br>
+    <label for="role">Hire date</label><br>
+    <input type="date" name="hire_date" id="role" value="{{hire_date}}"><br>
+    <hr>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->

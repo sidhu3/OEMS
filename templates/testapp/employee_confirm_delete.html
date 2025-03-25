@@ -1,0 +1,15 @@
+{% extends 'testapp/index.html'%}
+{% load static %}
+
+{% block bodyblock %}
+    <div class="container">
+        <h3 style="color: rgb(193, 188, 191);">Do you really want to delete {{employee.first_name|upper}}</h3><br>
+    <form method="post">
+        {{form.as_p}}
+        {% csrf_token %}
+        <a href="/all_emp"><input type="submit" name="" value="Delete" class="btn btn-danger"></a>
+    </form>
+    <br>    
+    <a href="/all_emp" class="btn btn-success">No I don't want to delete</a>
+    </div>
+{% endblock %}
