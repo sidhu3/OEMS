@@ -22,7 +22,7 @@ class Employee(models.Model):
     salary = models.FloatField(default=0)
     bonus = models.FloatField(default=0)
     role = models.ForeignKey(role,on_delete=models.CASCADE)
-    phone = models.IntegerField(default=0)
+    phone = models.CharField(max_length=15)
     hire_date = models.DateField()
 
     def __str__(self):

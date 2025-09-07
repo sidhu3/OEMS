@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import Employee,role,Department 
 from datetime import datetime
 from django.db.models import Q
@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from testapp.forms import SignupForm
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView,CreateView,ListView,DetailView,UpdateView,DeleteView
+from django.views.generic import ListView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -73,22 +73,19 @@ def filter_emp(request):
     else:
         return HttpResponse('An Exception Occurred!')
 
-    return render(request,'testapp/filter_emp.html')
 
 def logout_view(request):
-    if request.method == 'POST':
-        logout(request)
-        return render(request,'testapp/index.html')
-    else:
-        return render(request,'testapp/logout.html')
-    
+    logout(request)
+    return redirect('/') 
+
+
 def signup_view(request):
     form = SignupForm
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            user=form.save()
-            user.set_password(user.password) 
+            user = form.save(commit=False)  
+            user.set_password(form.cleaned_data['password'])
             user.save()
             return HttpResponseRedirect('/accounts/login/')    
     return render(request,'testapp/signup.html',{'form':form})    
@@ -103,5 +100,4 @@ class UpdateEmployee_view(UpdateView):
 
 class DeleteEmployee(DeleteView):
     model = Employee
-    success_url = reverse_lazy('all_emp')
-            
+    success_url = reverse_lazy('all_emp')          
