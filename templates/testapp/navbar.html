@@ -1,0 +1,28 @@
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="/">Office EMS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon text-light"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="/all_emp">Employees</a></li>
+            <li class="nav-item"><a class="nav-link" href="/add_emp">Add</a></li>
+            <li class="nav-item"><a class="nav-link" href="/remove_emp">Remove</a></li>
+            <li class="nav-item"><a class="nav-link" href="/filter_emp">Filter</a></li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link"><i class="fas fa-user"></i> Welcome {{ user.username|upper }}</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/accounts/logout/"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="/accounts/login/"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/signup/"><i class="fas fa-user-plus"></i> Sign-Up</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>

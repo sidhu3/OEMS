@@ -2,7 +2,80 @@
 {% load static %}
 
 {% block bodyblock %}
-    <div class="container">
+    <div class="container mt-4" style="min-height: 80vh;">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow p-4">
+        <h2 class="text-center mb-2">Add an Employee!</h2>
+        <hr>
+
+        <form action="/add_emp" method="post">
+          {% csrf_token %}
+          
+          <div class="mb-2">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" name="first_name" id="first_name" class="form-control form-control-sm" value="{{first_name}}">
+          </div>
+
+          <div class="mb-2">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" name="last_name" id="last_name" class="form-control form-control-sm" value="{{last_name}}">
+          </div>
+
+          <div class="mb-2">
+            <label for="dept" class="form-label">Department</label>
+            <select name="dept" id="dept" class="form-select">
+              <option value="">Select Department</option>
+              <option value="1">HR</option>
+              <option value="2">IT</option>
+              <option value="3">Sales</option>
+            </select>
+          </div>
+
+          <div class="mb-1">
+            <label for="role" class="form-label">Role</label>
+            <select name="role" id="role" class="form-select">
+              <option value="">Select Role</option>
+              <option value="1">Manager</option>
+              <option value="2">Developer</option> 
+              <option value="3">Intern</option>
+              <option value="4">Staff</option>
+              <option value="5">Engineer</option>
+              <option value="6">Contract</option>             
+            </select>
+          </div>
+
+          <div class="mb-2">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="number" name="salary" id="salary" class="form-control form-control-sm" value="{{salary}}">
+          </div>
+
+          <div class="mb-2">
+            <label for="bonus" class="form-label">Bonus</label>
+            <input type="number" name="bonus" id="bonus" class="form-control form-control-sm" value="{{bonus}}">
+          </div>
+
+          <div class="mb-2">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="number" name="phone" id="phone" class="form-control form-control-sm" value="{{phone}}">
+          </div>
+
+          <div class="mb-2">
+            <label for="hire_date" class="form-label">Hire Date</label>
+            <input type="date" name="hire_date" id="hire_date" class="form-control" value="{{hire_date}}">
+          </div>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary px-4">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<!-- <div class="container mt-2">
         <h1>Add an Employee!</h1>
         <hr>
         <form action="/add_emp" method="post">
@@ -40,11 +113,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       
-    </div>
-   
-    
-{% endblock %}
-
+    </div> -->
 <!-- <form action="/add_emp" method="post">
     {% csrf_token %}
     <label for="first_name">First Name</label><br>

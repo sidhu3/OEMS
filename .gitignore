@@ -1,0 +1,27 @@
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Django stuff
+*.log
+db.sqlite3
+
+# IDE files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+
+# Optional: ignore uploaded static images (keep only CSS/JS)
+static/images/
+

@@ -23,15 +23,15 @@ urlpatterns = [
     path('all_emp',views.all_emp,name='all_emp'),
     path('add_emp',views.add_emp,name='add_emp'),
     path('remove_emp',views.remove_emp,name='remove_emp'),
-    path('remove_emp/<int:pk>',views.remove_emp,name='remove_emp'),
     path('filter_emp',views.filter_emp,name='filter_emp'),
-    path('accounts/logout/',views.logout_view),
+    path('accounts/logout/',views.logout_view, name='logout'),
     path('signup/',views.signup_view),
-    path('accounts/',include('django.contrib.auth.urls')),
+    # path('accounts/',include('django.contrib.auth.urls')),
+    path('accounts/login/',views.login_view, name='login'),
+    path('forgot-password/', views.custom_password_reset_view, name='custom_password_reset'),
 
     path('update/<int:pk>',views.UpdateEmployee_view.as_view()),
     path('delete/<int:pk>/', views.DeleteEmployee.as_view()),
-    path('list/', views.Employee_list_view.as_view(),name='list'),
 
 ]
 

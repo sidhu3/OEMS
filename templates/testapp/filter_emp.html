@@ -2,7 +2,45 @@
 {% load static %}
 
 {% block bodyblock %}
-    <div class="container">
+<div class="container mt-4" style="min-height: 80vh;">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card shadow p-3">
+        <h2 class="text-center mb-3">Filter Employee Details</h2>
+        <hr class="my-2">
+
+        <form action="/filter_emp" method="post">
+          {% csrf_token %}
+          
+          <div class="mb-2">
+            <label for="name" class="form-label">First Name / Last Name</label>
+            <input type="text" name="name" id="name" class="form-control form-control-sm" value="{{name}}">
+          </div>
+
+          <div class="mb-2">
+            <label for="dept" class="form-label">Department</label>
+            <input type="text" name="dept" id="dept" class="form-control form-control-sm" value="{{dept}}">
+          </div>
+
+          <div class="mb-2">
+            <label for="role" class="form-label">Role</label>
+            <input type="text" name="role" id="role" class="form-control form-control-sm" value="{{role}}">
+          </div>
+
+          <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary  px-3">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+{% endblock %}
+
+<!-- <div class="container mt-3">
         <h1>Filter Employee Details</h1>
         <hr>
         <form action="/filter_emp" method="post">
@@ -14,10 +52,8 @@
             <label for="role">Role</label><br>
             <input type="text" name="role" id="role" value="{{role}}"><br>
             
-            <hr>
+            <br>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
-    </div>
-    
-{% endblock %}
+</div> -->

@@ -2,16 +2,96 @@
 {% load static %}
 
 {% block bodyblock %}
-<body>
-    <div class="container">
-       <div>
-        <h2 style="color: whitesmoke;">Update Employee Details of {{employee.first_name|upper}}</h2>
-        
-        <form method="post">
-            {{form.as_p}}
-            {% csrf_token %}
-            <input type="submit" name="" value="Update" class="btn btn-primary">
+
+<div class="container mt-4" style="min-height: 80vh;">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card shadow p-3">
+        <h4 class="text-center mb-3">
+          Update Employee Details of {{ employee.first_name|upper }}
+        </h4>
+        <hr class="my-2">
+
+        <form method="post" action="/update/{{ employee.id }}">
+          {% csrf_token %}
+
+          <div class="mb-2">
+            <label for="dept" class="form-label">Department</label>
+            <select name="dept" id="dept" class="form-select form-select-sm">
+              <option value="">Select Department</option>
+              <option value="1" {% if employee.dept.id == 1 %}selected{% endif %}>HR</option>
+              <option value="2" {% if employee.dept.id == 2 %}selected{% endif %}>IT</option>
+              <option value="3" {% if employee.dept.id == 3 %}selected{% endif %}>Sales</option>
+            </select>
+          </div>
+
+          <div class="mb-2">
+            <label for="role" class="form-label">Role</label>
+            <select name="role" id="role" class="form-select form-select-sm">
+              <option value="">Select Role</option>
+              <option value="1" {% if employee.role.id == 1 %}selected{% endif %}>Manager</option>
+              <option value="2" {% if employee.role.id == 2 %}selected{% endif %}>Developer</option>
+              <option value="3" {% if employee.role.id == 3 %}selected{% endif %}>Intern</option>
+              <option value="4" {% if employee.role.id == 4 %}selected{% endif %}>Staff</option>
+              <option value="5" {% if employee.role.id == 5 %}selected{% endif %}>Engineer</option>
+              <option value="6" {% if employee.role.id == 6 %}selected{% endif %}>Contract</option>              
+            </select>
+          </div>
+
+          <div class="mb-2">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="number" name="salary" id="salary"
+                   class="form-control form-control-sm"
+                   value="{{ employee.salary }}">
+          </div>
+
+          <div class="mb-2">
+            <label for="bonus" class="form-label">Bonus</label>
+            <input type="number" name="bonus" id="bonus"
+                   class="form-control form-control-sm"
+                   value="{{ employee.bonus }}">
+          </div>
+
+          <div class="mb-2">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="number" name="phone" id="phone"
+                   class="form-control form-control-sm"
+                   value="{{ employee.phone }}">
+          </div>
+
+          <div class="text-center mt-2">
+            <button type="submit" class="btn btn-primary btn-sm px-3">Update</button>
+          </div>
         </form>
-       </div>
+
+      </div>
     </div>
+  </div>
+</div>
+
+
 {% endblock %}
+
+<!-- <div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="card shadow p-3">
+        <h4 class="text-center mb-2">
+          Update Employee Details of {{ employee.first_name|upper }}
+        </h4>
+        <hr class="my-2 mb-3" >
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-area">
+            {{ form.as_p }}
+          </div>
+
+          <div class="text-center mt-2">
+            <input type="submit" value="Update" class="btn btn-primary btn-sm px-3">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
